@@ -1,5 +1,6 @@
 import time
 
+
 class BlockData(object):
     """
     Represents the data to be stored in a block in the block chain.

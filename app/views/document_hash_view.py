@@ -14,32 +14,6 @@ class DocumentHashView(MethodView):
     def get(self):
         """
         Checks whether a document hash exists.
-
-        parameters:
-            index:
-                type: int
-                description: The index of the block where the hash is stored
-            hash:
-                type: string
-                description: The document's hash
-
-        responses:
-            200: The hash was found successfully
-            schema:
-                type: object
-                properties:
-                    suceeded: true
-                    hash:
-                        type: string
-                    time_stamp:
-                        type: double
-            
-            404: The index is invalid
-            schema:
-                type: object
-                properties:
-                    suceeded: false
-                    reason: "Invalid Index"
         """
         index = request.args.get('index', type=int)
         doc_hash = request.args['hash']
@@ -56,25 +30,9 @@ class DocumentHashView(MethodView):
                 }), 200
         return jsonify(suceeded=False, reason='Invalid Index'), 404
 
-
     def post(self):
         """
         Adds a new document hash to the chain (to be mined)
-
-        parameters:
-            hash:
-                type: string
-                description: document hash
-  
-        responses:
-            200: The hash was added successfully
-            schema:
-                type: object
-                properties:
-                    succeeded: true
-                    index:
-                        type: int
-                        description: Index of the block that will store the hash
         """
         data = BlockData(request.json['hash'])
         index = self.chain.add_data(data)

@@ -1,5 +1,6 @@
 import hashlib
 
+
 class ProofOfWork(object):
     """Provides utility methods for Proof of Work"""
 
@@ -16,15 +17,15 @@ class ProofOfWork(object):
         """
         block_str = ''.join([str(block.index), str(block.data), block.prev_hash])
         nonce = 0
-        hash_str = ProofOfWork.isNonceValid(block_str, nonce)
+        hash_str = ProofOfWork.is_nonce_valid(block_str, nonce)
         while hash_str is None:
             nonce += 1
-            hash_str = ProofOfWork.isNonceValid(block_str, nonce)
+            hash_str = ProofOfWork.is_nonce_valid(block_str, nonce)
         block.nonce = nonce
         block.hash = hash_str
 
     @staticmethod
-    def isNonceValid(block_str, nonce):
+    def is_nonce_valid(block_str, nonce):
         """
         Validates a nonce.
 
@@ -42,4 +43,3 @@ class ProofOfWork(object):
             return hash_str
         else:
             return None
-    

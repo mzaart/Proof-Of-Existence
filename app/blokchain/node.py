@@ -1,6 +1,7 @@
 import requests
 import jsonpickle
 
+
 class Node(object):
     """
     This class represents a single node and is responsible for syncing up 

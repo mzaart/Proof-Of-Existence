@@ -3,6 +3,7 @@ import hashlib
 from block import Block
 from proof_of_work import ProofOfWork
 
+
 class Blockchain(object):
     """
     Represents a Block Chain.
@@ -62,7 +63,7 @@ class Blockchain(object):
 
     def is_chain_valid(self):
         """
-        Chaecks if the Block Chain is valid.
+        Checks if the Block Chain is valid.
 
         Returns:
             True if the chain is valid. False otherwise.
